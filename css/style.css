@@ -1,0 +1,280 @@
+@charset "utf-8";
+
+/*
+ */
+
+/* *****共通設定***** */
+
+body {
+  backgroundcolor: #696969;
+}
+
+a {
+  color: #696969;
+}
+
+a:hover {
+  color: #a9a9a9;
+}
+
+.bg-primary,
+.btn-primary {
+  background-color: #00008b !important;
+}
+
+.border-primary {
+  border-color: #00008b !important;
+}
+
+.bg-maincolor {
+  background-color: #f0f8ff !important;
+}
+
+.btn-warning:hover {
+  color: #212529;
+  background-color: #ffa500;
+  border-color: #ffa500;
+}
+
+.btn {
+  border-radius: 5px;
+  background-color: #010066;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.bg-yl-color {
+  background-color: #fffaf0 !important;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 3px #000;
+}
+
+.font-patrick {
+  font-family: 'Helvetica', cursive;
+}
+
+/* ヘッダー(navbar) */
+#nav01 {
+  border-bottom: 3px solid #00008b;
+}
+
+
+
+/* ヘッダー(navbar) */
+
+/* メニューのレスポンシブ設定*/
+
+#nav02 .nav-fill {
+  width: 100%;
+}
+
+#nav02 .nav-item {
+  border-left: 1px solid #dee2e6;
+}
+
+#nav02 .last-list-md {
+  border-right: 1px solid #dee2e6;
+}
+
+
+
+
+/* ハンバーガーメニューのボタン */
+.sp-menu__box {
+  position: fixed;  /* 位置を固定 */
+  top: 1%;  /* 最上部 */
+  right: 10%;  /* 右端 */
+  /* 中の要素を上下中央寄せ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* サイズ指定 */
+  height: 60px;
+  width: 60px;
+  /* 最前面にする */
+  z-index: 100;
+  background-color: #00008b;
+}
+/* メニューの白線を疑似要素を使って3本作成 */
+.sp-menu__box span,         /* 真ん中の線 */
+.sp-menu__box span:before,  /* 上の線 */
+.sp-menu__box span:after {  /* 下の線 */
+  /* contentの値を指定しないと疑似要素が生成されない */
+  content: "";
+  /* ３本線のサイズと色を指定 */
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background-color: #f0f8ff;
+  /* 3本線の位置は絶対位置で指定 */
+  position: absolute;
+}
+/* 上の線の位置 */
+.sp-menu__box span:before {
+  /* 真ん中の線と離す距離 */
+  bottom: 8px;
+}
+/* 下の線の位置 */
+.sp-menu__box span:after {
+  /* 真ん中の線と離す距離 */
+  top: 8px;
+}
+
+/* チェックボックスは常に非表示 */
+#sp-menu__check {
+  display: none;
+}
+/* チェックボックスのチェックがON（スマホ用メニューを開いた状態） */
+/* 真ん中の線 */
+#sp-menu__check:checked ~ .sp-menu__box span {
+  /* 透明にして見えなくする */
+  background: rgba(255, 255, 255, 0);
+}
+/* 上の線 */
+#sp-menu__check:checked ~ .sp-menu__box span::before {
+  /* 真ん中の線との距離を無くす（真ん中の線と同じ位置にする） */
+  bottom: 0;
+  /* 右に45度傾けてバツの片側の線にする */
+  transform: rotate(45deg);
+}
+/* 下の線 */
+#sp-menu__check:checked ~ .sp-menu__box span::after {
+  /* 真ん中の線との距離を無くす（真ん中の線と同じ位置にする） */
+  top: 0;
+  /* 左に45度傾けてバツの片側の線にする */
+  transform: rotate(-45deg);
+}
+#sp-menu__check:checked ~ .hamburger__content {
+  left: 0;
+}
+
+/* スマホ用メニュー */
+.sp-menu__content {
+  /* 絶対位置で指定   */
+  position: fixed;
+  /* 画面全体に表示 */
+  width: 80%;
+  height: 50%;
+  /* 開始位置は左上隅 */
+  top: 0;
+  left: 0;
+  /* 前面に表示するがハンバーガーボタンよりは背後 */
+  z-index: 90;
+  background-color: #000000;
+}
+/* スマホ用メニューのリスト */
+.sp-menu__list {
+  padding: 70px 10px 0;
+  background-color: #00008b;
+}
+/* スマホ用メニュー項目 */
+.sp-menu__item {
+  border-bottom: solid 1px #ffffff;
+  list-style: none;
+}
+/* スマホ用メニュー項目のリンク */
+.sp-menu__link {
+  display: block;
+  width: 80%;
+  font-size: 13px;
+  box-sizing: border-box;
+  color: #fff;
+  text-decoration: none;
+  padding: 9px 15px 10px 0;
+}
+/* ハンバーガーボタンを押してチェックがONの時だけ
+   スマホ用メニューを画面左端に移動する */
+#sp-menu__check:checked ~ .sp-menu__content {
+  left: 0;
+}
+/* 変更箇所はコメントの項目のみ */
+.sp-menu__content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;  /* 最上部 */
+  right: 0;  /* 右端 */
+
+  /* 普段は画面外にするために左端を画面右端の位置にする */
+  left: 100%;
+
+  z-index: 90;
+  background-color: #00008b;
+  
+  /* 右端からゆっくり移動するように表示 */
+  transition: all 1s;
+}
+
+
+
+
+
+/* フッター */
+#footer-sns img {
+  height: 58px;
+  width: auto;
+  margin-right: 25px;
+}
+
+#footer-index ul ul {
+  padding-left: 0.75rem;
+  border-left: 1px solid #6c757d;
+}
+
+/* *****トップページ***** */
+.jumbotron {
+  background-image: url("../img/TOPpage_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-color #ffffff;
+  padding-bottom: 24%;
+  
+}
+
+/* *****下層ページ***** */
+.breadcrumb-item + .breadcrumb-item:before {
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: small;
+  color: #fff;
+}
+
+#page .jumbotron {
+  background: #f1efff url("../img/subpage-headding.jpg") no-repeat center center;
+  background-size: cover;
+  border-radius: initial;
+}
+
+
+
+
+p.w-nomal{
+  width 100% 
+  word-wrap: normal;
+}
+
+p.w-break{
+width 100% 
+  word-wrap: break-all;
+}
+ 
+p.b-nomal{
+width 100% 
+  word-break: normal;
+}
+ 
+p.b-break{
+width 100% 
+  word-break: break-all;
+}
+ 
+p.b-keep{
+width 100% 
+  word-break: keep-all;
+}
+
